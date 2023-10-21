@@ -20,13 +20,17 @@ The problem of Tutorial 01 is the following:
 
 The problem of Tutorial 02 is the following:
 
-> Let $\mathcal{M}=\mathbb{S}^{m-1}\times\mathbb{S}^{n-1}$, which is an embedded submanifold of $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$ with its usual Euclidean structure. We turn $\mathcal{M}$ into a Riemannian submanifold by using the Euclidean structure of the ambient space $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$. Let $\mathcal{M}\in\mathbb{R}^{m\times n}$ and
->
-> $$f:\mathcal{M}\rightarrow\mathbb{R},\quad f(x,y)=x^TMy.$$
-> 
-> In the exercise Product o spheres, you showed that $f:\mathcal{M}\rightarrow\mathbb{R}$ is smooth, and worked out an expression for the Riemannian gradient of $f$. Now, we want to solve
-> 
-> $$\max_{(x,y)\in\mathcal{M}}\ f(x,y).$$
+---
+
+(**Problem 02 - Riemannian Gradient Descent on Product of Spheres**) Let $\mathcal{M}=\mathbb{S}^{m-1}\times\mathbb{S}^{n-1}$, which is an embedded submanifold of $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$ with its usual Euclidean structure. We turn $\mathcal{M}$ into a Riemannian submanifold by using the Euclidean structure of the ambient space $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$. Let $\mathcal{M}\in\mathbb{R}^{m\times n}$ and
+
+ $$f:\mathcal{M}\rightarrow\mathbb{R},\quad f(x,y)=x^TMy.$$
+ 
+ In the exercise Product o spheres, you showed that $f:\mathcal{M}\rightarrow\mathbb{R}$ is smooth, and worked out an expression for the Riemannian gradient of $f$. Now, we want to solve
+ 
+ $$\max_{(x,y)\in\mathcal{M}}\ f(x,y).$$
+
+ ---
 
 Note that the maximum value of $f$ on $\mathcal{M}$ is the largest singular value of $M$. Since in the book and the following, the RGD iterates towards to the negative of gradient (i.e. toward the minimum of $f$), we need to transform this maximization problem to a minimization problem by adding a negative sign before the objective function.
 
