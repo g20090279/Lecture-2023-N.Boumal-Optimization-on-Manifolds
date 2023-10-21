@@ -4,31 +4,31 @@
 
 The problem of Tutorial 01 is the following:
 
----
+--- *Problem 01 - Rayleigh Quotient* ---
 
-(**Problem 01 - Rayleigh Quotient**) Given a symmetric $A\in\mathbb{R}^{n\times n}$, we want:
+Given a symmetric $A\in\mathbb{R}^{n\times n}$, we want:
 
 $$\max_{x\in\mathbb{R}^n}x^TAx,\quad \text{s.t.}\quad \|x\|=1.$$
  
 The manifold is the sphere: $\mathcal{M}=\mathbb{S}^{n-1}=\{x\in\mathbb{R}^n:\|x\|=1\}$, and the cost function to minimize is $f(x)=-x^TAx$.
 
----
+--- End ---
 
 ## Tutorial 02: Riemannian Gradient Descent (RGD) on Product of Spheres
 
 The problem of Tutorial 02 is the following:
 
----
+--- *Problem 02 - Riemannian Gradient Descent on Product of Spheres* ---
 
-(**Problem 02 - Riemannian Gradient Descent on Product of Spheres**) Let $\mathcal{M}=\mathbb{S}^{m-1}\times\mathbb{S}^{n-1}$, which is an embedded submanifold of $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$ with its usual Euclidean structure. We turn $\mathcal{M}$ into a Riemannian submanifold by using the Euclidean structure of the ambient space $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$. Let $\mathcal{M}\in\mathbb{R}^{m\times n}$ and
+Let $\mathcal{M}=\mathbb{S}^{m-1}\times\mathbb{S}^{n-1}$, which is an embedded submanifold of $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$ with its usual Euclidean structure. We turn $\mathcal{M}$ into a Riemannian submanifold by using the Euclidean structure of the ambient space $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$. Let $\mathcal{M}\in\mathbb{R}^{m\times n}$ and
 
- $$f:\mathcal{M}\rightarrow\mathbb{R},\quad f(x,y)=x^TMy.$$
+$$f:\mathcal{M}\rightarrow\mathbb{R},\quad f(x,y)=x^TMy.$$
  
- In the exercise Product o spheres, you showed that $f:\mathcal{M}\rightarrow\mathbb{R}$ is smooth, and worked out an expression for the Riemannian gradient of $f$. Now, we want to solve
+In the exercise Product o spheres, you showed that $f:\mathcal{M}\rightarrow\mathbb{R}$ is smooth, and worked out an expression for the Riemannian gradient of $f$. Now, we want to solve
  
- $$\max_{(x,y)\in\mathcal{M}}\ f(x,y).$$
+$$\max_{(x,y)\in\mathcal{M}}\ f(x,y).$$
 
- ---
+--- End ---
 
 Note that the maximum value of $f$ on $\mathcal{M}$ is the largest singular value of $M$. Since in the book and the following, the RGD iterates towards to the negative of gradient (i.e. toward the minimum of $f$), we need to transform this maximization problem to a minimization problem by adding a negative sign before the objective function.
 
@@ -42,7 +42,7 @@ To perform gradient descent method, we need obtain the Riemannian gradient. We i
 
 3. Project the Euclidean gradient to the tangent space, from which we can reach the Riemannian gradient
    
-  $$\begin{aligned}\mathrm{grad}f(x,y)&=\mathrm{Proj}_{(x,y)}\left(\mathrm{grad}\bar{f}(x,y)\right)\\&=\left(\mathrm{Proj}_x\left(\mathrm{grad}(x\mapsto\bar{f}(x,y))(x)\right),\mathrm{Proj}_y\left(\mathrm{grad}(y\mapsto\bar{f}(x,y))(y)\right)\right)\\&=\left((I-xx^T)My,(I-yy^T)M^Tx\right).\end{aligned}$$
+  $$\begin{aligned}\mathrm{grad}f(x,y)&=\mathrm{Proj}_{(x,y)}\left(\mathrm{grad}\bar{f}(x,y)\right)\\ &=\left(\mathrm{Proj}_x\left(\mathrm{grad}(x\mapsto\bar{f}(x,y))(x)\right),\mathrm{Proj}_y\left(\mathrm{grad}(y\mapsto\bar{f}(x,y))(y)\right)\right)\\ &=\left((I-xx^T)My,(I-yy^T)M^Tx\right).\end{aligned}$$
 
 4. Map the new iteration back to manifold by retraction. There are many retractions for $\mathcal{M}$. One possible and the simplest retraction is to normalize the new data
 
@@ -50,7 +50,7 @@ To perform gradient descent method, we need obtain the Riemannian gradient. We i
 
 In a conclusion, the Riemannian Gradient is given by
 
---- Algorithm Begin ---
+--- *Algorithm Begin* ---
 
 INPUT: $(x_0,y_0)\in\mathcal{M},\epsilon>0$, step size $\alpha>0$.
  
@@ -62,4 +62,4 @@ OUTPUT: Final position $(x,y)\in\mathcal{M}$.
 4. Compute $\mathrm{grad}(-f(x,y))$,
 5. End while.
 
---- Algorithm End ---
+--- *Algorithm End* ---
