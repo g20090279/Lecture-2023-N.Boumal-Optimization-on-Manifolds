@@ -42,7 +42,7 @@ To perform gradient descent method, we need obtain the Riemannian gradient. We i
 
 3. Project the Euclidean gradient to the tangent space, from which we can reach the Riemannian gradient
    
-  $$\begin{aligned}\mathrm{grad}f(x,y)&=\mathrm{Proj}_{(x,y)}\left(\mathrm{grad}\bar{f}(x,y)\right)\\ &=\left(\mathrm{Proj}_x\left(\mathrm{grad}(x\mapsto\bar{f}(x,y))(x)\right),\mathrm{Proj}_y\left(\mathrm{grad}(y\mapsto\bar{f}(x,y))(y)\right)\right)\\ &=\left((I-xx^T)My,(I-yy^T)M^Tx\right).\end{aligned}$$
+  $$\begin{align}\mathrm{grad}f(x,y)&=\mathrm{Proj}_{(x,y)}\left(\mathrm{grad}\bar{f}(x,y)\right)\\ &=\left(\mathrm{Proj}_x\left(\mathrm{grad}(x\mapsto\bar{f}(x,y))(x)\right),\mathrm{Proj}_y\left(\mathrm{grad}(y\mapsto\bar{f}(x,y))(y)\right)\right)\\ &=\left((I-xx^T)My,(I-yy^T)M^Tx\right).\end{align}$$
 
 4. Map the new iteration back to manifold by retraction. There are many retractions for $\mathcal{M}$. One possible and the simplest retraction is to normalize the new data
 
