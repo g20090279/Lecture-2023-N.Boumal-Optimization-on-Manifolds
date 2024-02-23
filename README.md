@@ -20,7 +20,7 @@ The manifold is the sphere: $\mathcal{M}=\mathbb{S}^{n-1}=\{x\in\mathbb{R}^n:\|x
 
 The problem of Tutorial 02 is the following:
 
---- *Problem 02 - Riemannian Gradient Descent on Product of Spheres* ---
+--- *Problem 02 - RGD on Product of Spheres* ---
 
 Let $\mathcal{M}=\mathbb{S}^{m-1}\times\mathbb{S}^{n-1}$, which is an embedded submanifold of $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$ with its usual Euclidean structure. We turn $\mathcal{M}$ into a Riemannian submanifold by using the Euclidean structure of the ambient space $\mathcal{E}=\mathbb{R}^m\times\mathbb{R}^n$. Let $\mathcal{M}\in\mathbb{R}^{m\times n}$ and
 
@@ -32,7 +32,7 @@ $$\max_{(x,y)\in\mathcal{M}}\ f(x,y).$$
 
 --- End ---
 
-Note that the maximum value of $f$ on $\mathcal{M}$ is the largest singular value of $M$. Since in the book and the following, the RGD iterates towards to the negative of gradient (i.e. toward the minimum of $f$), we need to transform this maximization problem to a minimization problem by adding a negative sign before the objective function.
+Note that the maximum value of $f$ on $\mathcal{M}$ is the largest singular value of $M$. Since in the book and the following, the RGD iterates toward the negative of gradient (i.e. toward the minimum of $f$), we need to transform this maximization problem to a minimization problem by adding a negative sign in the objective function.
 
 To perform gradient descent method, we need obtain the Riemannian gradient. We introduce the steps to approach the Riemannian gradient as the followings:
 
@@ -48,11 +48,11 @@ To perform gradient descent method, we need obtain the Riemannian gradient. We i
 
 3. Project the Euclidean gradient to the tangent space, from which we can reach the Riemannian gradient
    
-  $$\begin{align}
+  $$\begin{align*}
   \mathrm{grad}f(x,y)&=\mathrm{Proj}_{(x,y)}\left(\mathrm{grad}\bar{f}(x,y)\right)\\
   &=\left(\mathrm{Proj}_x\left(\mathrm{grad}(x\mapsto\bar{f}(x,y))(x)\right),\mathrm{Proj}_y\left(\mathrm{grad}(y\mapsto\bar{f}(x,y))(y)\right)\right)\\
   &=\left((I-xx^T)My,(I-yy^T)M^Tx\right).
-  \end{align}$$
+  \end{align*}$$
 
 4. Map the new iteration back to manifold by retraction. There are many retractions for $\mathcal{M}$. One possible and the simplest retraction is to normalize the new data
 
@@ -73,3 +73,19 @@ OUTPUT: Final position $(x,y)\in\mathcal{M}$.
 5. End while.
 
 --- *Algorithm End* ---
+
+## Tutorial 03: RGD on Stiefel Manifold
+
+--- *Problem 02: RGD on Stiefel Manifold ---
+
+For $p<n$, consider the Stiefel manifold
+
+$$\mathcal{M}=\mathrm{St}(n,p)=\lbrace X\in\mathbb{R}^{n\times p}:X^TX=I_p\rbrace.$$
+
+We consider $\mathcal{M}$ as a Riemannian submanifold of $\mathbb{R}^{n\times p}$ endowed with usual the inner product $\langle X,Y\rangle=\mathrm{Tr}(X^TY)$. Let
+
+$$f:\mathcal{M}\rightarrow\mathbb{R},\qquad f(X)=\mathrm{Tr}(X^TAX),$$
+
+where $A$ is a real symmetric $n\times n$ matrix.
+
+--- End ---

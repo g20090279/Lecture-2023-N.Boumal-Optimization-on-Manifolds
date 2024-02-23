@@ -7,11 +7,14 @@ function [fOpt,iterX,iterY] = RgdProdSphere(M, x0, y0, alpha, maxIter)
 %   - alpha [scalar]: fixed step size
 %   - maxIter [integer]: maximum number of itrations
 % Output(s)
-% - Final position (x,y)
-%          - List of iterates for x and y (iterX,iterY)
-%          - conv, which is true if it did converge, false if not
-% The algorithm stops if difference between x'My and \sigma_max(M) is less
-% than \epsilon = 10^(-6).
+%   - fOpt [scalar]: the maximum value of f
+%   - iterX [matrix of size n-by-maxIter]: each column of it is x at the
+%     corresponding iteration. There are either maxIter- or numIter-column
+%     valid data
+%   - iterY [matrix of size m-by-maxIter]: each column of it is y at the
+%     corresponding iteration. There are either maxIter- or numIter-column
+%     valid data
+
 % Initalization
 if nargin<5, maxIter = 1e4; end
 lenX = length(x0);
